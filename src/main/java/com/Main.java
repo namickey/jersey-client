@@ -11,9 +11,7 @@ import java.util.Map;
 
 public class Main {
     public static void main(String[] args) {
-        Client client = ClientBuilder.newClient();
-        List<ProjectDto> list = client.target("http://localhost:8080/demo")
-                .path("projects").request(MediaType.APPLICATION_JSON).get(new GenericType<List<ProjectDto>>() {});
-        list.stream().forEach(System.out::println);
+        RestClient client = new RestClient();
+        client.getProjectList().stream().forEach(System.out::println);
     }
 }
